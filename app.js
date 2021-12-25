@@ -20,8 +20,19 @@ function togglePlay(e) {
 }
 
 
+function skippingTime(e) {
+
+   const skipBtn = e?.target.closest('.skip-backward') || e?.target.closest('.skip-forward');
+
+   if (!skipBtn) return;
+
+   const skipStep = parseFloat(skipBtn.dataset.skip);
+   video.currentTime += skipStep;
+}
+
 
 
 
 // * Listeners
 player.addEventListener('click', togglePlay);
+player.addEventListener('click', skippingTime);
